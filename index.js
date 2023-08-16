@@ -45,7 +45,7 @@ app.get('/', (req, res) => {
         }
     }
 
-    db.query(`INSERT INTO logs (createdAt, message) VALUES (NOW(), 'test')`, (err, result) => {
+    db.query(`INSERT INTO logs (createdAt, message) VALUES (NOW(), ${pickedTest.name})`, (err, result) => {
         console.log('message');
     })
 
