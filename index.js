@@ -45,6 +45,10 @@ app.get('/', (req, res) => {
         }
     }
 
+    db.query(`INSERT INTO logs (createdAt, message) VALUES (NOW(), 'test')`, (err, result) => {
+        console.log('message');
+    })
+
     db.query(`INSERT INTO logs (createdAt, message) VALUES (NOW(), ${pickedTest.name})`, (err, result) => {
         console.log(pickedTest);
         res.redirect(pickedTest.url);
