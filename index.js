@@ -18,15 +18,14 @@ db.connect((err) => {
     console.log('MySQL connected');
 })
 
-db.asyncquery = util2.promisify(db.query).bind(db);
 
 app = express();
 
 const urlChatBot = 'https://docs.google.com/forms/d/1RXxgioBqS5LBL1W2hkS0P-aBc7vekokTF10wS4hpJVY'
 const urlDoctor = 'https://docs.google.com/forms/d/1wLCVgA4cJovf7JZeCLnWQabRbjiZkuszbuMpbdzGGIM'
 
-db.query(`INSERT INTO logs (createdAt, message) VALUES (NOW(), 'Server started')`, (err, result) => {
-    console.log('Server started');
+db.query(`INSERT INTO logs (createdAt, message) VALUES (NOW(), 'Server restarted')`, (err, result) => {
+    console.log('Server restarted');
 })
 
 app.get('/', async (req, res) => {
@@ -55,5 +54,5 @@ app.get('/', async (req, res) => {
 })
 
 app.listen(4444, () => {
-    console.log('Server running on port 3000');
+    console.log('Server running on port 4444');
 })
