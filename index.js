@@ -54,7 +54,7 @@ app.get('/', async (req, res) => {
 })
 
 app.get('/logs', async (req, res) => {
-    db.query(`SELECT message, count(*) FROM logs GROUP BY message`, (err, result) => {
+    db.query(`SELECT message, count(*) as count FROM logs GROUP BY message`, (err, result) => {
         res.send(result);
     })
 })
