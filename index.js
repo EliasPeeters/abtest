@@ -19,10 +19,31 @@ db.connect((err) => {
 
 app = express();
 
+const urlChatBot = 'https://docs.google.com/forms/d/1RXxgioBqS5LBL1W2hkS0P-aBc7vekokTF10wS4hpJVY'
+const urlDoctor = 'https://docs.google.com/forms/d/1wLCVgA4cJovf7JZeCLnWQabRbjiZkuszbuMpbdzGGIM'
+
 app.get('/', (req, res) => {
-    db.query('INSERT INTO logs (createdAt, message) VALUES (NOW(), "test")', (err, result) => {
-        console.log(result);
-        res.send('Hello World');
+
+
+    // pick a random number between 0 and 1
+    let pickedTest = {}
+    let random = Math.random()
+
+    if (random < 0.5) {
+        pickedTest = {
+            url: urlChatBot,
+            name: 'Chatbot'
+        }
+    } else {
+        pickedTest = {
+            url: urlDoctor,
+            name: 'Doctor'
+        }
+    }
+
+    db.query(`INSERT INTO logs (createdAt, message) VALUES (NOW(), ${pickedTest.name})`, (err, result) => {
+        console.log(pickedTest);
+        res.redirect(pickedTest.url);
     })
 })
 
