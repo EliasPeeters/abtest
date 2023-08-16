@@ -5,3 +5,15 @@ services:
     ports:
       - 4444:4444
     restart: always
+  db:
+    image: 'jc21/mariadb-aria:latest'
+    restart: unless-stopped
+    ports:
+      - 3310:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: 'test1234'
+      MYSQL_DATABASE: 'database'
+      MYSQL_USER: 'testuser'
+      MYSQL_PASSWORD: 'test1234'
+    volumes:
+      - ./data:/var/lib/mysql
