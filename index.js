@@ -21,6 +21,7 @@ app = express();
 
 app.get('/', (req, res) => {
     db.query('INSERT INTO logs (createdAt, message) VALUES (NOW(), "test")', (err, result) => {
+        console.log(result);
         res.send('Hello World');
     })
 })
