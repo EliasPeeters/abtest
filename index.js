@@ -17,6 +17,8 @@ db.connect((err) => {
     console.log('MySQL connected');
 })
 
+db.asyncquery = util2.promisify(db.query).bind(db);
+
 app = express();
 
 const urlChatBot = 'https://docs.google.com/forms/d/1RXxgioBqS5LBL1W2hkS0P-aBc7vekokTF10wS4hpJVY'
@@ -26,7 +28,7 @@ db.query(`INSERT INTO logs (createdAt, message) VALUES (NOW(), 'Server started')
     console.log('Server started');
 })
 
-app.get('/', (req, res) => {
+app.get('/', async (req, res) => {
 
 
     // pick a random number between 0 and 1
@@ -45,9 +47,7 @@ app.get('/', (req, res) => {
         }
     }
 
-    db.query(`INSERT INTO logs (createdAt, message) VALUES (NOW(), ${pickedTest.name})`, (err, result) => {
-        console.log('message');
-    })
+    await db.asyncquery(`INSERT INTO logs (createdAt, message) VALUES (NOW(), ${pickedTest.name})`)
 
     db.query(`INSERT INTO logs (createdAt, message) VALUES (NOW(), ${pickedTest.name})`, (err, result) => {
         console.log(pickedTest);
