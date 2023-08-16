@@ -22,6 +22,10 @@ app = express();
 const urlChatBot = 'https://docs.google.com/forms/d/1RXxgioBqS5LBL1W2hkS0P-aBc7vekokTF10wS4hpJVY'
 const urlDoctor = 'https://docs.google.com/forms/d/1wLCVgA4cJovf7JZeCLnWQabRbjiZkuszbuMpbdzGGIM'
 
+db.query(`INSERT INTO logs (createdAt, message) VALUES (NOW(), 'Server started')`, (err, result) => {
+    console.log('Server started');
+})
+
 app.get('/', (req, res) => {
 
 
