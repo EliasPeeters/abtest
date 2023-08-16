@@ -48,9 +48,7 @@ app.get('/', async (req, res) => {
         }
     }
 
-    await db.asyncquery(`INSERT INTO logs (createdAt, message) VALUES (NOW(), ${pickedTest.name})`)
-
-    db.query(`INSERT INTO logs (createdAt, message) VALUES (NOW(), ${pickedTest.name})`, (err, result) => {
+    db.query(`INSERT INTO logs (createdAt, message) VALUES (NOW(), '${pickedTest.name}')`, (err, result) => {
         console.log(pickedTest);
         res.redirect(pickedTest.url);
     })
