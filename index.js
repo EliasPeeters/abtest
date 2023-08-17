@@ -35,7 +35,7 @@ app.get('/', async (req, res) => {
     let pickedTest = {}
     let random = Math.random()
 
-    if (random < 0.05) {
+    if (random < 0.5) {
         pickedTest = {
             url: urlChatBot,
             name: 'Chatbot'
