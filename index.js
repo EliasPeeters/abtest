@@ -30,27 +30,29 @@ db.query(`INSERT INTO logs (createdAt, message) VALUES (NOW(), 'Server restarted
 
 app.get('/', async (req, res) => {
 
+    //
+    // // pick a random number between 0 and 1
+    // let pickedTest = {}
+    // let random = Math.random()
+    //
+    // if (random < 0.5) {
+    //     pickedTest = {
+    //         url: urlChatBot,
+    //         name: 'Chatbot'
+    //     }
+    // } else {
+    //     pickedTest = {
+    //         url: urlDoctor,
+    //         name: 'Doctor'
+    //     }
+    // }
+    //
+    // db.query(`INSERT INTO logs (createdAt, message) VALUES (NOW(), '${pickedTest.name}')`, (err, result) => {
+    //     console.log(pickedTest);
+    //     res.redirect(pickedTest.url);
+    // })
 
-    // pick a random number between 0 and 1
-    let pickedTest = {}
-    let random = Math.random()
-
-    if (random < 0.5) {
-        pickedTest = {
-            url: urlChatBot,
-            name: 'Chatbot'
-        }
-    } else {
-        pickedTest = {
-            url: urlDoctor,
-            name: 'Doctor'
-        }
-    }
-
-    db.query(`INSERT INTO logs (createdAt, message) VALUES (NOW(), '${pickedTest.name}')`, (err, result) => {
-        console.log(pickedTest);
-        res.redirect(pickedTest.url);
-    })
+    res.redirect('https://www.menti.com/al4i24ftsguq')
 })
 
 app.get('/logs', async (req, res) => {
